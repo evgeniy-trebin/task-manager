@@ -6,6 +6,7 @@ RSpec.describe Task, type: :model do
   describe '#validations' do
 
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:state) }
     it { should enumerize(:state).in(Task::STATE_NEW, Task::STATE_STARTED, Task::STATE_FINISHED).with_default(Task::STATE_NEW) }
 

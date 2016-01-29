@@ -10,7 +10,7 @@ class Task < ActiveRecord::Base
 
   enumerize :state, in: [STATE_NEW, STATE_STARTED, STATE_FINISHED], default: STATE_NEW, predicates: {prefix: true}
 
-  validates_presence_of :name, :state
+  validates_presence_of :name, :state, :user_id
 
   validate :check_state_change, if: :should_check_state_change?
 

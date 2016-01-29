@@ -1,0 +1,20 @@
+%h1
+  Tasks
+
+- if @tasks.any?
+  %table#tasks_list.table.table-striped.table-bordered
+    %thead
+      %tr
+        %td{style: 'width: 20%'}
+          = attr_name(Task, :name)
+        %td{style: 'width: 20%'}
+          = attr_name(Task, :user)
+        %td{style: 'width: 50%'}
+          = attr_name(Task, :description)
+        %td{style: 'width: 10%'}
+          = attr_name(Task, :state)
+    %tbody
+      = render partial: 'task', collection: @tasks
+- else
+  %p
+    = I18n.t('content.no_any_tasks')

@@ -27,3 +27,5 @@ en:
           attributes:
             state:
               cant_be_changed: can't be changed from current state
+  content:
+    no_any_tasks: There is no any tasks.

@@ -1,0 +1,9 @@
+%tr
+  %td
+    = task.name
+  %td
+    = task.user.email
+  %td
+    = task.description.truncate(50)
+  %td
+    = task.state_text

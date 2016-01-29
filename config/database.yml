@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: resolve
+  host: 127.0.0.1
+
+development:
+  <<: *default
+  database: task_manager_development
+
+test:
+  <<: *default
+  database: task_manager_test
+

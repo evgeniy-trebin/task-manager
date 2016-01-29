@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'factory_girl_rails'
 require 'shoulda/matchers'
-require 'shared_contexts'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -48,17 +47,6 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
-
-  config.extend ControllerMacros, type: :controller
-  # config.include Helpers, type: :controller
-
-  config.before :suite do
-    Warden.test_mode!
-  end
-
-  config.after :each do
-    Warden.test_reset!
-  end
 
   config.filter_run focus: true
   config.filter_run_excluding slow: true

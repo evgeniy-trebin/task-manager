@@ -24,13 +24,14 @@ gem 'turbolinks'
 gem 'haml', '4.0.7'
 gem 'haml-rails', '~> 0.9'
 
+gem 'rmagick', '2.13.3', require: false
+gem 'carrierwave', '0.10.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # if RUBY_PLATFORM=~ /mingw32/
 #   gem 'therubyracer', '0.11.0beta1', :platform => :ruby
 # else
 #   gem 'therubyracer', '0.12.1', :platform => :ruby
 # end
-
 
 gem 'enumerize', '1.1.0'
 

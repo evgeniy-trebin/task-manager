@@ -3,6 +3,9 @@ class Task < ActiveRecord::Base
   extend Enumerize
 
   belongs_to :user
+  has_many :attach_files, inverse_of: :task, dependent: :destroy
+
+  after_commit :remove_files, on: :destroy
 
   STATE_NEW = :new
   STATE_STARTED = :started
@@ -66,6 +69,10 @@ class Task < ActiveRecord::Base
                        false
                    end
     errors.add(:state, :cant_be_changed) if it_has_error
+  end
+
+  def remove_files
+    attach_files.each { |file| File.delete(file.file) if File.exists?(file.file) }
   end
 
 end

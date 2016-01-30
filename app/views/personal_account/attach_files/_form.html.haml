@@ -1,0 +1,20 @@
+= form_for [:personal_account, @task, @attach_file], html: {class: 'form-horizontal'}  do |f|
+
+  = render partial: '_common/errors', locals: {obj: @attach_file}
+
+  .form-group
+    %label.col-sm-2.control-label
+      = attr_name(AttachFile, :name)
+    .col-sm-5
+      = f.text_field :name, class: 'form-control', placeholder: attr_name(AttachFile, :name)
+
+  .form-group
+    %label.col-sm-2.control-label
+      = attr_name(AttachFile, :file)
+    .col-sm-5
+      = f.file_field :file
+
+  .form-group
+    .col-sm-5.col-sm-offset-2
+      .actions
+        = f.submit t('views.buttons_text.save'), class: 'btn btn-success'

@@ -94,11 +94,6 @@ RSpec.describe PersonalAccount::TasksController, type: :controller do
         expect(assigns(:task)).to be_a(Task)
         expect(assigns(:task)).to be_persisted
       end
-
-      it 'redirects to the created task' do
-        post :create, {task: valid_attributes}, valid_session
-        expect(response).to redirect_to(personal_account_task_path(Task.last))
-      end
     end
 
     context 'with invalid params' do

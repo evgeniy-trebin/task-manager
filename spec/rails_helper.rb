@@ -100,4 +100,19 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.after(:all) do
+    # Get rid of the linked images
+    if Rails.env.test? || Rails.env.cucumber?
+      tmp = Factory(:attach_file)
+      store_path = File.dirname(File.dirname(tmp.file.url))
+      temp_path = tmp.file.cache_dir
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/#{store_path}/[^.]*"])
+      FileUtils.rm_rf(Dir["#{temp_path}/[^.]*"])
+      # if you want to delete everything under the CarrierWave root that you set in an initializer,
+      # you can do this:
+      # FileUtils.rm_rf(CarrierWave::Uploader::Base.root)
+    end
+  end
+
 end

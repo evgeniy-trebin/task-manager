@@ -7,7 +7,6 @@ RSpec.describe Task, type: :model do
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:user_id) }
-    it { should validate_presence_of(:state) }
     it { should enumerize(:state).in(Task::STATE_NEW, Task::STATE_STARTED, Task::STATE_FINISHED).with_default(Task::STATE_NEW) }
 
     it 'must be valid' do
@@ -58,6 +57,7 @@ RSpec.describe Task, type: :model do
     end
 
     it '#start' do
+
       @task.start
       expect(@task.state.to_sym).to eq(Task::STATE_STARTED)
       @started_task.start

@@ -1,0 +1,19 @@
+%h1 Listing attach_files
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @attach_files.each do |attach_file|
+      %tr
+        %td= link_to 'Show', attach_file
+        %td= link_to 'Edit', edit_attach_file_path(attach_file)
+        %td= link_to 'Destroy', attach_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Attach file', new_attach_file_path

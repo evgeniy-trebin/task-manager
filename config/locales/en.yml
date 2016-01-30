@@ -29,6 +29,7 @@ en:
               cant_be_changed: can't be changed from current state
   content:
     no_any_tasks: There is no any tasks.
+    no_any_files:  There is no any attach files.
   controller_messages:
     crud:
       create:
@@ -50,6 +51,7 @@ en:
     top_menu:
       brand: TaskManager
       home_link_text: Home
+      account_link_text: My Tasks
       log_in_link_text: Log in
       log_out_link_text: Log out
     sessions:

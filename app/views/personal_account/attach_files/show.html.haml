@@ -1,0 +1,12 @@
+.row
+  .col-sm-12
+    = flash_messages
+
+.row
+  .col-sm-12
+    %h1
+      = @attach_file.name
+
+    = link_to 'Download', download_personal_account_task_attach_file_path(@task, @attach_file), target: '_blank', class: 'btn btn-info'
+    = button_edit(edit_personal_account_task_attach_file_path(@task, @attach_file))
+    = button_back(personal_account_task_path(@task))

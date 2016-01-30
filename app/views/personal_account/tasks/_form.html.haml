@@ -1,6 +1,6 @@
 = form_for [:personal_account, @task], html: {class: 'form-horizontal'} do |f|
 
-  = render partial: 'errors'
+  = render partial: '_common/errors', locals: {obj: @task}
 
   .form-group
     %label.col-sm-2.control-label

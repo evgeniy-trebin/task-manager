@@ -1,6 +1,11 @@
 .row
-  .col-lg-12
+  .col-sm-12
     = flash_messages
+
+.row
+  .col-sm-12
+    %h1
+      = @task.name
 
     %table.table.table-bordered.table-striped
       %tbody
@@ -25,3 +30,36 @@
 
     = button_edit(edit_personal_account_task_path(@task))
     = button_back(personal_account_tasks_path)
+    = button_new(new_personal_account_task_attach_file_path(@task), 'Attach File')
+
+%hr
+
+.row
+  .col-sm-12
+    %h2
+      Attach Files
+    - if @task.attach_files.any?
+      %table.table.table-bordered.table-striped#tasks_list
+        %thead
+          %tr
+            %th{style: 'width: 20%'}
+              = attr_name(AttachFile, :name)
+            %th{style: 'width: 50%'}
+              = attr_name(AttachFile, :url)
+            %th{style: 'width: 30%'}
+
+        %tbody
+          - @task.attach_files.each do |file|
+            %tr
+              %td
+                = file.name
+              %td
+                = file.file.url
+              %td
+                = link_to 'Show', personal_account_task_attach_file_path(@task, file)
+                = link_to 'Edit', edit_personal_account_task_attach_file_path(@task, file)
+                = link_to 'Destroy', personal_account_task_attach_file_path(@task, file), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Download', download_personal_account_task_attach_file_path(@task, file), target: '_blank'
+    - else
+      %p
+        = t('content.no_any_files')

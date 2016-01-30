@@ -1,0 +1,6 @@
+- if obj.errors.any?
+  #error_explanation
+    = content_tag(:div, class: "alert alert-danger alert-dismissible") do
+      = alert_close_button
+      %h3= "#{pluralize(obj.errors.count, "error")} prohibited this product from being saved:"
+      = obj.errors.full_messages.join('<br />').html_safe

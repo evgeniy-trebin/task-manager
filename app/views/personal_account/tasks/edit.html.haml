@@ -1,0 +1,8 @@
+.row
+  .col-lg-12
+    %h1 Editing task
+
+    = render 'form'
+
+    = button_show(personal_account_task_path(@task))
+    = button_back(personal_account_tasks_path)

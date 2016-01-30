@@ -14,6 +14,8 @@ class Task < ActiveRecord::Base
 
   validate :check_state_change, if: :should_check_state_change?
 
+  scope :sorted, ->() { order(created_at: :desc) }
+
   def new?
     state_new?
   end

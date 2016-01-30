@@ -1,0 +1,27 @@
+.row
+  .col-lg-12
+    = flash_messages
+
+    %table.table.table-bordered.table-striped
+      %tbody
+        %tr
+          %td{style: 'width: 20%'}
+            %strong
+              = attr_name(Task, :name)
+          %td{style: 'width: 80%'}
+            = @task.name
+        %tr
+          %td
+            %strong
+              = attr_name(Task, :description)
+          %td
+            = @task.description
+        %tr
+          %td
+            %strong
+              = attr_name(Task, :state)
+          %td
+            = @task.state_text
+
+    = button_edit(edit_personal_account_task_path(@task))
+    = button_back(personal_account_tasks_path)

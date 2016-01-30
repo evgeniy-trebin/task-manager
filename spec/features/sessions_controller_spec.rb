@@ -16,7 +16,7 @@ RSpec.feature 'SessionsController', type: :feature do
       create(:user, user_attributes)
       fill_and_send_login_form(user_attributes)
       expect(current_path).to eq(personal_account_root_path)
-      expect(page).to have_text I18n.t('controller_messages.sessions.welcome_notice')
+      expect(page).to have_selector('#tasks_list')
     end
 
     scenario 'log in and log out' do

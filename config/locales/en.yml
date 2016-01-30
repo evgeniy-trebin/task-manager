@@ -30,10 +30,23 @@ en:
   content:
     no_any_tasks: There is no any tasks.
   controller_messages:
+    crud:
+      create:
+        success: '%{model} was successfully created.'
+      update:
+        success: '%{model} was successfully updated.'
+      destroy:
+        success: '%{model} was successfully destroyed.'
     sessions:
       welcome_notice: Welcome!
       invalid_data_alert: Email or password is invalid!
   views:
+    buttons_text:
+      new: New
+      back: Back
+      save: Save
+      edit: Edit
+      show: Show
     top_menu:
       brand: TaskManager
       home_link_text: Home

@@ -1,0 +1,26 @@
+.row
+  .col-lg-12
+    %h1
+      = t('views.sessions.log_in_heading')
+.row
+  .col-lg-12
+    = form_tag session_path, class: 'form-horizontal', id: 'log_in_form' do
+
+      = flash_messages
+
+      .form-group
+        %label.col-sm-2.control-label
+          = attr_name(User, :email)
+        .col-sm-5
+          = text_field :user, :email, class: 'form-control', placeholder: attr_name(User, :email)
+
+      .form-group
+        %label.col-sm-2.control-label
+          = attr_name(User, :password)
+        .col-sm-5
+          = password_field :user, :password, class: 'form-control', placeholder: attr_name(User, :password)
+
+      .form-group
+        .col-sm-10.col-sm-offset-2
+          = submit_tag t('views.sessions.log_in_button_text'), class: 'btn btn-success'
+

@@ -29,3 +29,17 @@ en:
               cant_be_changed: can't be changed from current state
   content:
     no_any_tasks: There is no any tasks.
+  controller_messages:
+    sessions:
+      welcome_notice: Welcome!
+      invalid_data_alert: Email or password is invalid!
+  views:
+    top_menu:
+      brand: TaskManager
+      home_link_text: Home
+      log_in_link_text: Log in
+      log_out_link_text: Log out
+    sessions:
+      log_in_heading: Log in
+      log_in_button_text: Log in
+      errors_heading: Error!

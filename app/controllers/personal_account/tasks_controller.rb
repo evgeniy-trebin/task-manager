@@ -1,6 +1,9 @@
 module PersonalAccount
   class TasksController < BaseController
-    before_action :set_task, only: [:show, :edit, :update, :destroy]
+
+    include ApplicationHelper
+
+    before_action :set_task, only: [:show, :edit, :update, :destroy, :change_state]
 
     # GET /tasks
     # GET /tasks.json
@@ -71,6 +74,14 @@ module PersonalAccount
       respond_to do |format|
         format.html { redirect_to personal_account_tasks_path, notice: t('controller_messages.crud.destroy.success', model: 'Task') }
         format.json { head :no_content }
+      end
+    end
+
+    def change_state
+      if @task.next_state
+        render json: {result: :success, state: @task.state, html: render_to_string(inline: change_task_state_link(@task))}
+      else
+        render json: {result: :fail, message: t('controller_messages.tasks.change_state_error'), state: @task.state}
       end
     end
 

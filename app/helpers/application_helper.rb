@@ -4,6 +4,21 @@ module ApplicationHelper
     model_class.human_attribute_name(attr)
   end
 
+  def change_task_state_link(task)
+    case task.state.to_sym
+      when Task::STATE_NEW
+        text, css_class = I18n.t('views.task_state_buttons.can_be_start'), 'btn-success'
+      when Task::STATE_STARTED
+        text, css_class = I18n.t('views.task_state_buttons.can_be_finish'), 'btn-info'
+      when Task::STATE_FINISHED
+        return I18n.t('views.task_state_buttons.finished')
+      else
+        return ''
+    end
+    context = defined?(view_context)  ? view_context : self
+    context.link_to text, '#', class: %{btn #{css_class} js-task-state-link}, data: {url: change_state_personal_account_task_path(task), id: task.id}
+  end
+
   def button_new(url, model_class=nil)
     link_button [t('views.buttons_text.new'), model_class].join(' '), url
   end

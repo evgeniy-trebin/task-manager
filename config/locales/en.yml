@@ -41,6 +41,8 @@ en:
     sessions:
       welcome_notice: Welcome!
       invalid_data_alert: Email or password is invalid!
+    tasks:
+      change_state_error: State couldn't be changed
   views:
     buttons_text:
       new: New
@@ -58,3 +60,7 @@ en:
       log_in_heading: Log in
       log_in_button_text: Log in
       errors_heading: Error!
+    task_state_buttons:
+      can_be_start: Start it
+      can_be_finish: Finish it
+      finished: Finished

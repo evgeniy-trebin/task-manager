@@ -20,6 +20,9 @@ require 'rails_helper'
 
 RSpec.describe PersonalAccount::TasksController, type: :controller do
 
+  include ApplicationHelper
+  include ActionView::Helpers::UrlHelper
+
   let(:user) { create(:user) }
 
   # This should return the minimal set of attributes required to create a valid
@@ -264,5 +267,53 @@ RSpec.describe PersonalAccount::TasksController, type: :controller do
         expect(response).to have_http_status(204)
       end
     end
+  end
+
+  # PATCH #change_state
+  # ----------------------------------------------------------------------------------------------------
+  describe 'PATCH #change_state' do
+
+    before(:each) do
+      @task = create(:task, user: user)
+      @started_task = create(:started_task, user: user)
+      @finished_task = create(:finished_task, user: user)
+    end
+
+    it 'changes task state from :new to :started' do
+      expect {
+        patch :change_state, {id: @task}, valid_session
+        @task.reload
+      }.to change(@task, :state).from(Task::STATE_NEW.to_s).to(Task::STATE_STARTED.to_s)
+    end
+
+    it 'changes task state from :started to :finished' do
+      expect {
+        patch :change_state, {id: @started_task}, valid_session
+        @started_task.reload
+      }.to change(@started_task, :state).from(Task::STATE_STARTED.to_s).to(Task::STATE_FINISHED.to_s)
+    end
+
+    it 'does not change task state from :finished' do
+      expect {
+        patch :change_state, {id: @finished_task}, valid_session
+        @finished_task.reload
+      }.not_to change(@finished_task, :state).from(Task::STATE_FINISHED.to_s)
+    end
+
+    it 'returns successfully response' do
+      patch :change_state, {id: @task}, valid_session
+      @task.reload
+      result =  ActiveSupport::JSON.decode(response.body)
+      expect(result['result']).to eq('success')
+      expect(result['state']).to eq(@task.state.to_s)
+      expect(result['html']).to eq(change_task_state_link(@task))
+    end
+
+
+    it 'returns failure response' do
+      patch :change_state, {id: @finished_task}, valid_session
+      expect(response.body).to eq({result: :fail, message: I18n.t('controller_messages.tasks.change_state_error'), state: @finished_task.state}.to_json)
+    end
+
   end
 end

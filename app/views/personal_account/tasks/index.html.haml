@@ -1,5 +1,5 @@
 .row
-  .col-lg-12
+  .col-sm-12
     %h1 Listing tasks
 
     %table.table.table-bordered.table-striped#tasks_list
@@ -7,8 +7,9 @@
         %tr
           %th{style: 'width: 30%'}
             = attr_name(Task, :name)
-          %th{style: 'width: 55%'}
+          %th{style: 'width: 30%'}
             = attr_name(Task, :description)
+          %th{style: 'width: 15%'}
           %th{style: 'width: 15%'}
 
       %tbody
@@ -17,8 +18,10 @@
             %td
               = task.name
             %td
-              = task.description.truncate(80)
-            %td
+              = task.description.truncate(50)
+            %td.text-center
+              = change_task_state_link(task)
+            %td.text-center
               = link_to 'Show', personal_account_task_path(task)
               = link_to 'Edit', edit_personal_account_task_path(task)
               = link_to 'Destroy', personal_account_task_path(task), method: :delete, data: { confirm: 'Are you sure?' }

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :personal_account do
     root 'tasks#index'
     resources :tasks do
+      patch :change_state, on: :member
       resources :attach_files, except: :index do
         get :download, on: :member
       end

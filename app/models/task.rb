@@ -51,6 +51,17 @@ class Task < ActiveRecord::Base
     save
   end
 
+  def next_state
+    case state.to_sym
+      when STATE_NEW
+        start
+      when STATE_STARTED
+        finish
+      else
+        false
+    end
+  end
+
   private
 
   def should_check_state_change?

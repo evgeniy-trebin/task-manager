@@ -19,11 +19,8 @@ RSpec.describe Task, type: :model do
 
     before(:each) do
       @task = create(:task)
-      @started_task = create(:task)
-      @started_task.start
-      @finished_task = create(:task)
-      @finished_task.start
-      @finished_task.finish
+      @started_task = create(:started_task)
+      @finished_task = create(:finished_task)
     end
 
     it '#new?' do
@@ -81,11 +78,8 @@ RSpec.describe Task, type: :model do
 
     before(:each) do
       @task = create(:task)
-      @started_task = create(:task)
-      @started_task.start
-      @finished_task = create(:task)
-      @finished_task.start
-      @finished_task.finish
+      @started_task = create(:started_task)
+      @finished_task = create(:finished_task)
     end
 
     it 'must have state :new' do

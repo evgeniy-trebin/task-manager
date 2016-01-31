@@ -39,4 +39,23 @@ RSpec.describe ApplicationHelper, type: :helper do
     expect(button_back('#')).to eq(%Q{<a class="btn btn-default" href="#">#{I18n.t('views.buttons_text.back')}</a>})
   end
 
+  describe '#change_task_state_link' do
+
+    it 'creates link for task with state :new' do
+      task = create(:task)
+      expect(change_task_state_link(task)).to eq(%Q{<a class="btn btn-success js-task-state-link" data-url="#{change_state_personal_account_task_path(task)}" data-id="#{task.id}" href="#">#{I18n.t('views.task_state_buttons.can_be_start')}</a>})
+    end
+
+    it 'creates link for task with state :started' do
+      task = create(:started_task)
+      expect(change_task_state_link(task)).to eq(%Q{<a class="btn btn-info js-task-state-link" data-url="#{change_state_personal_account_task_path(task)}" data-id="#{task.id}" href="#">#{I18n.t('views.task_state_buttons.can_be_finish')}</a>})
+    end
+
+    it 'returns nothing for task with state :finished' do
+      task = create(:finished_task)
+      expect(change_task_state_link(task)).to eq(I18n.t('views.task_state_buttons.finished'))
+    end
+
+  end
+
 end

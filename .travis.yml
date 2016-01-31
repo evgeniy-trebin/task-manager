@@ -1,14 +1,11 @@
 language: ruby
 sudo: false
 script: 'ci/travis.rb'
-before_script:
-  - bundle update
-cache: bundler
 rvm:
   - 2.2.2
-  - 2.2.4
-  - ruby-head
 notifications:
-  email: true
-addons:
-  postgresql: "9.4"
+  email:
+    recipients:
+      - evgeniy.trebin@gmail.com
+    on_success: change
+    on_failure: always

@@ -18,7 +18,7 @@ class Build
     tasks.each do |task|
       cmd = "bundle exec rake #{task}"
       puts "Running command: #{cmd}"
-      return false unless system(env, cmd)
+      return false unless system(cmd)
     end
     true
   end

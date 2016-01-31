@@ -74,11 +74,12 @@ group :development do
   gem 'rack-mini-profiler', '0.9.7'
 end
 
+gem 'factory_girl_rails', '4.5.0'
+gem 'faker', '1.6.1'
+
 group :test do
   gem 'capybara', '2.5.0'
-  gem 'factory_girl_rails', '4.5.0'
   gem 'database_cleaner', '1.5.1'
-  gem 'faker', '1.6.1'
   gem 'launchy', '2.4.3'
   gem 'selenium-webdriver', '2.48.1'
   gem 'guard-rspec', '4.6.4'

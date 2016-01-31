@@ -28,8 +28,8 @@ en:
             state:
               cant_be_changed: can't be changed from current state
   content:
-    no_any_tasks: There is no any tasks.
-    no_any_files:  There is no any attach files.
+    no_any_tasks: There are no any tasks.
+    no_any_files:  There are no any attached files.
   controller_messages:
     crud:
       create:

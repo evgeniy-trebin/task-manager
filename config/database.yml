@@ -15,11 +15,4 @@ test:
   database: task_manager_test
 
 production:
-  database: dfqvfckkkbh0eo
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: dwrevmnqzarxiq
-  password: eBqYj1aHTUF9E2pM470zMbND5x
-  host: ec2-107-20-242-191.compute-1.amazonaws.com
-  port: 5432
+  url: <%= ENV['DATABASE_URL'] %>

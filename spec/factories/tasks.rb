@@ -3,7 +3,6 @@ FactoryGirl.define do
     user
     name { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
-    state Task::STATE_NEW
 
     factory :started_task do
       after(:create) do |task|
